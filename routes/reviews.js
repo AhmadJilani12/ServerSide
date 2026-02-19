@@ -1,12 +1,9 @@
-// routes/reviews.js
-import { Router } from 'express';
-import { createReview, getProductReviews, deleteReview } from '../controllers/reviewController.js';
-import { verifyToken } from '../middleware/auth.js';
-
-const router = Router();
+const router = require('express').Router();
+const { createReview, getProductReviews, deleteReview } = require('../controllers/reviewController');
+const { verifyToken } = require('../middleware/auth');
 
 router.post('/', verifyToken, createReview);
 router.get('/:productId', getProductReviews);
 router.delete('/:id', verifyToken, deleteReview);
 
-export default router;
+module.exports = router;

@@ -1,14 +1,11 @@
-// routes/auth.js
-import { Router } from 'express';
-import { register, login, getMe, updateProfile } from '../controllers/authController.js';
-import { verifyToken } from '../middleware/auth.js';
-import { validateRegister, validateLogin } from '../middleware/validate.js';
-
-const router = Router();
+const router = require('express').Router();
+const { register, login, getMe, updateProfile } = require('../controllers/authController');
+const { verifyToken } = require('../middleware/auth');
+const { validateRegister, validateLogin } = require('../middleware/validate');
 
 router.post('/register', validateRegister, register);
 router.post('/login', validateLogin, login);
 router.get('/me', verifyToken, getMe);
 router.put('/profile', verifyToken, updateProfile);
 
-export default router;
+module.exports = router;
