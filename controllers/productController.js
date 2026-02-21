@@ -1,7 +1,7 @@
 const Product = require('../models/Product');
 const Category = require('../models/Category');
 const multer = require('multer');
-const { v4: uuidv4 } = require('uuid');
+import { v4 as uuidv4 } from 'uuid';
 const path = require('path');
 const mongoose = require('mongoose');
 
